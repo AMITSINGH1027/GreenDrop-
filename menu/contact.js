@@ -30,3 +30,5 @@ document.addEventListener("click", (e) => {
     sidePanel.classList.remove("show");
   }
 });
+
+document.getElementById('contactForm')
