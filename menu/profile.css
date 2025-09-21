@@ -1,0 +1,260 @@
+.navbar {
+  height: 55px;
+  width: 100%;
+  padding: 10px 0px;
+  background: #98cb9a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.navbar-logo img {
+  margin-left: 25px;
+  width: 60px;
+  margin-right: 10px;
+  border-radius: 10%;
+}
+
+.profile-container {
+  margin-left: 35%;
+  margin-top: 10%;
+  width: 100%;
+  max-width: 400px;
+}
+
+.profile-header {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 3px solid #4CAF50;
+}
+
+.profile-header h2 {
+  margin: 5px 0;
+}
+
+.email {
+  color: #666;
+  font-size: 14px;
+  margin: 3px 0;
+}
+
+.rank {
+  font-size: 14px;
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.stat {
+  background: white;
+  flex: 1;
+  margin: 0 5px;
+  border-radius: 12px;
+  text-align: center;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.stat h3 {
+  color: #4CAF50;
+  margin: 0;
+}
+
+.stat p {
+  font-size: 14px;
+  margin: 5px 0 0;
+}
+
+.options {
+  background: white;
+  border-radius: 12px;
+  padding: 10px 0;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.options a {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  text-decoration: none;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  font-size: 15px;
+}
+
+.options a:last-child {
+  border-bottom: none;
+}
+
+.options a i {
+  margin-right: 15px;
+  color: #4CAF50;
+}
+
+.options a.logout {
+  color: #f44336;
+}
+
+.options a.logout i {
+  color: #f44336;
+}
+
+.back-btn {
+  position: absolute;
+  top: 130px;
+  left: 50px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: #2e7d32;
+  color: #fff;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.back-btn i {
+  font-size: 1rem;
+}
+
+.back-btn:hover {
+  background: #1b5e20;
+  transform: translateX(-4px);
+}
+
+/* Menu container */
+.menu-container {
+  position: relative;
+  margin-right: 20px;
+}
+
+/* Menu Button */
+.menu-btn {
+  width: 30px;
+  height: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 1101;
+  position: relative;
+}
+
+.menu-btn span {
+  display: block;
+  height: 3px;
+  background: #ffffff; /* white lines for visibility */
+  border-radius: 3px;
+  transition: 0.4s;
+}
+
+/* Animate hamburger to X (isse mneu baar ka cross aata hai)*/
+
+/* Side Panel */
+.side-panel {
+  position: fixed;
+  top: 0;
+  right: -25%; /* hidden by default */
+  width: 20%;  /* 20-25% width for modern look */
+  height: 100%;
+  background: #1b5e20; /* dark green */
+  background: linear-gradient(180deg, #2e7d32, #1b5e20);
+  box-shadow: -4px 0 20px rgba(0,0,0,0.3);
+  transition: right 0.5s ease, opacity 0.5s ease;
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+  opacity: 0.95;
+}
+
+.side-panel.show {
+  right: 0px;
+}
+
+/* Panel Header */
+.panel-header {
+  text-align: center;
+  padding: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.panel-header h2 {
+  margin: 0;
+  font-size: 22px;
+  letter-spacing: 2px;
+  color: #ffeb3b; /* highlight brand */
+}
+
+/* Panel Links */
+.panel-links {
+  list-style: none;
+  padding: 40px 0;
+  margin: 0;
+  text-align: center;
+}
+
+.panel-links li {
+  margin: 10px 0;
+}
+
+.panel-links li a {
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  transition: all 0.3s ease;
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 8px;
+}
+
+.panel-links li a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+  color: #ffeb3b;
+}
+
+/* Panel Footer */
+.panel-footer {
+  text-align: center;
+  font-size: 14px;
+  padding: 15px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  color: #ddd;
+}
+

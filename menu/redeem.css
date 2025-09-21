@@ -1,0 +1,285 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4fdf7;
+  padding: 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+}
+
+.points-balance {
+  text-align: center;
+  margin-top: 70px;
+  background: rgb(140, 183, 123);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+}
+
+.points-balance h2 {
+  margin: 0;
+  color: #19681d;
+}
+
+.points-balance p {
+  font-size: 18px;
+  margin-top: 10px;
+  color: #333;
+}
+
+.section-title {
+  margin: 20px 0 10px;
+  color: #2e7d32;
+  border-left: 5px solid #1f452d;
+  padding-left: 10px;
+}
+
+.rewards-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.reward-card {
+  background: #fff;;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reward-img {
+  width: 100%;
+  max-width: 200px;
+  object-fit: contain;
+  background: transparent; /* ensures no bg */
+}
+.reward-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 14px rgba(0,0,0,0.15);
+}
+
+.reward-card img {
+  max-width: 100px;
+  margin-bottom: 10px;
+}
+
+.reward-card h3 {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.reward-card p {
+  margin: 5px 0;
+  color: #063911;
+}
+
+.redeem-btn {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.redeem-btn:hover {
+  background: #388e3c;
+}
+
+@media (max-width: 600px) {
+  .reward-card {
+    padding: 10px;
+  }
+
+  .reward-card h3 {
+    font-size: 14px;
+  }
+}
+
+/* Menu container */
+.menu-container {
+  position: relative;
+  margin-right: 20px;
+}
+
+/* Menu Button */
+.menu-btn {
+  width: 30px;
+  height: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 1101;
+  position: relative;
+}
+
+.menu-btn span {
+  display: block;
+  height: 3px;
+  background: #ffffff; 
+  border-radius: 3px;
+  transition: 0.4s;
+}
+
+.side-panel {
+  position: fixed;
+  top: 0;
+  right: -25%;
+  width: 20%;
+  height: 100%;
+  background: #1b5e20;
+  background: linear-gradient(180deg, #2e7d32, #1b5e20);
+  box-shadow: -4px 0 20px rgba(0,0,0,0.3);
+  transition: right 0.5s ease, opacity 0.5s ease;
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+  opacity: 0.95;
+}
+
+.side-panel.show {
+  right: 0px;
+}
+
+/* Panel Header */
+.panel-header {
+  text-align: center;
+  padding: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.panel-header h2 {
+  margin: 0;
+  font-size: 22px;
+  letter-spacing: 2px;
+  color: #ffeb3b; /* highlight brand */
+}
+
+/* Panel Links */
+.panel-links {
+  list-style: none;
+  padding: 40px 0;
+  margin: 0;
+  text-align: center;
+}
+
+.panel-links li {
+  margin: 10px 0;
+}
+
+.panel-links li a {
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  transition: all 0.3s ease;
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 8px;
+}
+
+.panel-links li a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+  color: #ffeb3b;
+}
+
+/* Panel Footer */
+.panel-footer {
+  text-align: center;
+  font-size: 14px;
+  padding: 15px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  color: #ddd;
+}
+
+/* Navbar */
+.navbar {
+  width: 100%;
+  padding: 10px 30px;
+  background: #98cb9a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* Logo */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.navbar-logo img {
+    margin-left: 0px;
+  width: 60px;
+  margin-right: 10px;
+  border-radius: 10%;
+}
+
+/* Actions */
+.navbar-actions {
+    margin-right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Search Box */
+.search-box {
+  position: relative;
+  height: 40px;
+  transition: 0.4s;
+  width: 40px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #f1f1f1;
+  display: flex;
+  align-items: center;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0 10px;
+  font-size: 16px;
+  width: 0;
+  transition: width 0.4s;
+}
+
+.search-box .search-btn {
+    margin: -7px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0 0px;
+  color: #2e7d32;
+}
+
+.search-box:hover {
+  width: 200px;
+}
+
+.search-box:hover input {
+  width: 150px;
+}

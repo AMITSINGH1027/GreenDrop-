@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+   .menu-bar {
+  background: #2e7d32;
+  padding: 1rem;
+}
+
+.menu-bar ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-bar ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.menu-bar ul li a:hover {
+  color: #fcd34d;
+}
+
+/* Points Section */
+.points-section {
+  margin-left: auto; /* right side push */
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.points-display {
+  font-weight: 600;
+  color: #2e7d32;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.points-display i {
+  color: #f59e0b;
+  font-size: 1.2rem;
+}
+
+/* Refer button */
+.refer-btn {
+  background: #2e7d32;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.3s ease;
+}
+
+.refer-btn:hover {
+  background: #1b5e20;
+  transform: scale(1.05);
+}
+
+</style>
+<body>
+   <!-- Menu Bar -->
+<nav class="menu-bar">
+  <ul>
+    <li><a href="/menu/profile.html"><i class="fas fa-user"></i> Profile</a></li>
+    <li><a href="/menu/info.html"><i class="fas fa-circle-info"></i> Info</a></li>
+    <li><a href="/menu/faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
+
+    <!-- 🌟 Modern Points Section -->
+    <li class="points-section">
+      <div class="points-badge">
+        <i class="fas fa-coins"></i>
+        <span id="userPoints">120</span>
+      </div>
+      <button class="refer-btn">
+        <i class="fas fa-user-friends"></i> Refer & Earn
+      </button>
+    </li>
+  </ul>
+</nav>
+
+<script>
+  let points = 120; // Example points
+  const userPoints = document.getElementById("userPoints");
+  const referBtn = document.querySelector(".refer-btn");
+
+  // Update points dynamically
+  function addPoints(amount) {
+    points += amount;
+    userPoints.textContent = points;
+  }
+
+  // Refer a friend button click
+  referBtn.addEventListener("click", () => {
+    alert("Share this referral link: https://greendrop.com/ref=YOURCODE");
+    addPoints(50); // Example: give 50 points for referral
+});
+</script>
+
+
+</body>
+</html>

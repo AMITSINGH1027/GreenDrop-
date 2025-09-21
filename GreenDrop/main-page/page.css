@@ -1,0 +1,482 @@
+/* Navbar */
+.navbar {
+  width: 100%;
+  padding: 10px 30px;
+  background: #98cb9a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* Logo */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.navbar-logo img {
+    margin-left: 0px;
+  width: 60px;
+  margin-right: 10px;
+  border-radius: 10%;
+}
+
+/* Actions */
+.navbar-actions {
+    margin-right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Search Box */
+.search-box {
+  position: relative;
+  height: 40px;
+  transition: 0.4s;
+  width: 40px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #f1f1f1;
+  display: flex;
+  align-items: center;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0 10px;
+  font-size: 16px;
+  width: 0;
+  transition: width 0.4s;
+}
+
+.search-box .search-btn {
+    margin: -7px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0 0px;
+  color: #2e7d32;
+}
+
+.search-box:hover {
+  width: 200px;
+}
+
+.search-box:hover input {
+  width: 150px;
+}
+
+
+
+/* Menu Button */
+.menu-btn {
+    padding-right: 45px;
+  width: 30px;
+  height: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.menu-btn span {
+  display: block;
+  height: 3px;
+  background: #ebeceb;
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+/* Menu container */
+.menu-container {
+  position: relative;
+}
+
+/* Menu Button */
+.menu-btn {
+  width: 30px;
+  height: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 1101;
+  position: relative;
+}
+
+.menu-btn span {
+  display: block;
+  height: 3px;
+  background: #ffffff; /* white lines for visibility */
+  border-radius: 3px;
+  transition: 0.4s;
+}
+
+/* Animate hamburger to X (isse mneu baar ka cross aata hai)*/
+
+/* Side Panel */
+.side-panel {
+  position: fixed;
+  top: 0;
+  right: -25%; /* hidden by default */
+  width: 20%;  /* 20-25% width for modern look */
+  height: 100%;
+  background: #1b5e20; /* dark green */
+  background: linear-gradient(180deg, #2e7d32, #1b5e20);
+  box-shadow: -4px 0 20px rgba(0,0,0,0.3);
+  transition: right 0.5s ease, opacity 0.5s ease;
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+  opacity: 0.95;
+}
+
+.side-panel.show {
+  right: 0px;
+}
+
+/* Panel Header */
+.panel-header {
+  text-align: center;
+  padding: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.panel-header h2 {
+  margin: 0;
+  font-size: 22px;
+  letter-spacing: 2px;
+  color: #ffeb3b; /* highlight brand */
+}
+
+/* Panel Links */
+.panel-links {
+  list-style: none;
+  padding: 40px 0;
+  margin: 0;
+  text-align: center;
+}
+
+.panel-links li {
+  margin: 10px 0;
+}
+
+.panel-links li a {
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  transition: all 0.3s ease;
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 8px;
+}
+
+.panel-links li a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+  color: #ffeb3b;
+}
+
+/* Panel Footer */
+.panel-footer {
+  text-align: center;
+  font-size: 14px;
+  padding: 15px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  color: #ddd;
+}
+
+
+
+
+/* Hero Section */
+.hero {
+margin-left: -10px;
+  position: relative;
+  width: 101.2%;
+  height: 55vh; /* Half screen height */
+  overflow: hidden;
+}
+
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(70%); /* Darken image for better text visibility */
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+}
+
+.hero-text h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+.hero-text p {
+  font-size: 20px;
+  font-weight: 400;
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.4);
+}
+
+
+
+/* Vending Machine Section */
+.machines {
+  padding: 25px 5px;
+  text-align: center;
+  background: #f9f9f9;
+}
+
+.machines h2 {
+  font-size: 32px;
+  color: #2e7d32;
+  margin-bottom: 40px;
+}
+
+.machine-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.machine-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.machine-card:hover {
+  transform: translateY(-10px);
+}
+
+.machine-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.machine-card h3 {
+  margin: 15px 0 5px;
+  font-size: 20px;
+  color: #2e7d32;
+}
+
+.machine-card p {
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+
+
+/* Why They Come Section */
+.why-come {
+  padding: 25px 5px;
+  background: #ffffff; /* light eco-green background */
+  text-align: center;
+}
+
+.why-come h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2e7d32;
+  margin-bottom: 40px;
+}
+
+.reasons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.reason-card {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reason-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #2e7d32;
+}
+
+.reason-card p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.reason-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+
+
+/* FAQ Section */
+.faq {
+  padding: 25px 5px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.faq h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2e7d32;
+  margin-bottom: 30px;
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: auto;
+  text-align: left;
+}
+
+.faq-item {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 15px;
+}
+
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 15px;
+  cursor: pointer;
+  color: #2e7d32;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  padding: 0 15px;
+}
+
+.faq-answer p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 200px; /* enough space for text */
+  padding: 15px;
+}
+
+.faq-item.active .faq-question span {
+  transform: rotate(45deg);
+}
+
+
+
+footer {
+  background: #2e7d32;
+  color: white;
+  padding: 40px 20px 20px;
+  margin-top: 25px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin-top: -3%;
+}
+
+.footer-left h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.footer-left p {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.footer-center h3,
+.footer-right h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.footer-center ul {
+  list-style: none;
+}
+
+.footer-center ul li {
+  margin: 6px 0;
+}
+
+.footer-center ul li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-center ul li a:hover {
+  color: #c8e6c9;
+}
+
+.social-icons a {
+  font-size: 20px;
+  margin-right: 10px;
+  text-decoration: none;
+  color: white;
+  transition: transform 0.3s;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+  color: #c8e6c9;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.3);
+  padding-top: 10px;
+  font-size: 13px;
+  opacity: 0.8;
+}
