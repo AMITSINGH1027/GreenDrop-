@@ -1,4 +1,4 @@
-const pool = require('./db');
+const pool = require('./routes/db');
 
 async function testConnection() {
   try {
