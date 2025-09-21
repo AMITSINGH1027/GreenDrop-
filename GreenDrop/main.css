@@ -1,41 +1,183 @@
 * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-    }
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: linear-gradient(135deg, #a8e063, #56ab2f);
-      overflow: hidden;
-      flex-direction: column;
-    }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #a8e063, #56ab2f);
+  overflow: hidden;
+  flex-direction: column;
+}
 
-    .logo { display: flex; align-items: center; margin-bottom: 20px; color: white; animation: bounce 2s infinite; }
-    .logo-icon { width: 50px; height: 50px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, #4caf50, #2e7d32); position: relative; box-shadow: 0 0 15px rgba(46,125,50,0.7); margin-right: 10px; }
-    .logo-icon::before { content: ""; position: absolute; top: 8px; left: 15px; width: 20px; height: 30px; background: #81c784; border-radius: 50%; transform: rotate(-20deg); }
-    .logo-text { font-size: 28px; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.2); }
-    @keyframes bounce { 0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);} }
-    .container { background: #fff; width: 900px; max-width: 100%; border-radius: 20px; box-shadow: 0 15px 25px rgba(0,0,0,0.1); overflow: hidden; display: flex; transition: transform 0.6s ease-in-out; animation: fadeIn 1s ease-in; position: relative; z-index: 10; }
-    @keyframes fadeIn { from{opacity:0;transform:scale(0.9);} to{opacity:1;transform:scale(1);} }
-    .form-box { flex: 1; padding: 50px; display: none; flex-direction: column; justify-content: center; animation: slideIn 0.8s ease; }
-    .form-box.active { display: flex; }
-    @keyframes slideIn { from{opacity:0;transform:translateY(40px);} to{opacity:1;transform:translateY(0);} }
-    .form-box h2 { margin-bottom: 20px; font-size: 28px; font-weight: 600; color: #2e7d32; }
-    .form-box input { padding: 9px 15px; margin: 5px 0; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; transition: 0.3s; }
-    .form-box input:focus { border-color: #2e7d32; box-shadow: 0 0 8px rgba(46,125,50,0.3); }
-    .form-box button { margin-top: 15px; padding: 12px; background: #2e7d32; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: transform 0.3s ease, background 0.3s; }
-    .form-box button:hover { background: #1b5e20; transform: scale(1.08); }
-    .toggle-box { flex: 1; background: #2e7d32; color: #fff; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px; animation: fadeIn 1s ease; }
-    .toggle-box h2 { font-size: 28px; margin-bottom: 15px; }
-    .toggle-box p { margin-bottom: 20px; }
-    .toggle-buttons { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
-    .toggle-box button { background: transparent; border: 2px solid #fff; color: #fff; border-radius: 8px; padding: 10px 25px; cursor: pointer; transition: 0.3s; }
-    .toggle-box button:hover { background: #fff; color: #2e7d32; transform: scale(1.1); }
-    @media (max-width: 768px) {
-      .container { flex-direction: column; width: 100%; }
-      .toggle-box { order: -1; }
-    }
+.logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  color: white;
+  animation: bounce 2s infinite;
+}
+.logo-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #4caf50, #2e7d32);
+  position: relative;
+  box-shadow: 0 0 15px rgba(46, 125, 50, 0.7);
+  margin-right: 10px;
+}
+.logo-icon::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 15px;
+  width: 20px;
+  height: 30px;
+  background: #81c784;
+  border-radius: 50%;
+  transform: rotate(-20deg);
+}
+.logo-text {
+  font-size: 28px;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.container {
+  background: #fff;
+  width: 900px;
+  max-width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+  animation: fadeIn 1s ease-in;
+  position: relative;
+  z-index: 10;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.form-box {
+  flex: 1;
+  padding: 50px;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  animation: slideIn 0.8s ease;
+}
+.form-box.active {
+  display: flex;
+}
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.form-box h2 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: 600;
+  color: #2e7d32;
+}
+.form-box input {
+  padding: 9px 15px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: 0.3s;
+}
+.form-box input:focus {
+  border-color: #2e7d32;
+  box-shadow: 0 0 8px rgba(46, 125, 50, 0.3);
+}
+.form-box button {
+  margin-top: 15px;
+  padding: 12px;
+  background: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s;
+}
+.form-box button:hover {
+  background: #1b5e20;
+  transform: scale(1.08);
+}
+.toggle-box {
+  flex: 1;
+  background: #2e7d32;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+  animation: fadeIn 1s ease;
+}
+.toggle-box h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+.toggle-box p {
+  margin-bottom: 20px;
+}
+.toggle-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.toggle-box button {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  border-radius: 8px;
+  padding: 10px 25px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.toggle-box button:hover {
+  background: #fff;
+  color: #2e7d32;
+  transform: scale(1.1);
+}
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    width: 100%;
+  }
+  .toggle-box {
+    order: -1;
+  }
+}
