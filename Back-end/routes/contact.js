@@ -1,19 +1,26 @@
-
 const express = require('express');
 const router = express.Router();
-const pool = require('../db');
+const pool = require('../config/db');
 
 router.post('/submit', async (req, res) => {
+  console.log('Contact submission:', req.body.name);
   const { reason, name, email, message } = req.body;
+
+  if (!name || !email || !message) {
+    return res.status(400).json({ message: 'Name, email, and message are required.' });
+  }
+
   try {
     await pool.query(
       'INSERT INTO contact_submissions (reason, name, email, message) VALUES (?, ?, ?, ?)',
-      [reason, name, email, message]
+      [reason || 'General', name, email, message]
     );
-    res.json({ message: 'Contact form submitted successfully' });
+
+    console.log('Contact submitted:', name);
+    res.json({ message: 'Thank you! Your message has been sent.' });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Server error' });
+    console.error('Contact error:', err);
+    res.status(500).json({ message: 'Server error submitting contact form.' });
   }
 });
 

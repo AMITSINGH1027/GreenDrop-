@@ -1,63 +1,50 @@
-
 const express = require('express');
 const router = express.Router();
-const pool = require('../db');
-const jwt = require('jsonwebtoken');
+const pool = require('../config/db');
+const authenticateToken = require('../middleware/auth');
 
-
-function authenticateToken(req, res, next) {
-  const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1];
-  if (!token) return res.status(401).json({ message: 'No token provided' });
-
-  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-    if (err) return res.status(403).json({ message: 'Invalid token' });
-    req.user = user;
-    next();
-  });
-}
-
-
+// Get rewards
 router.get('/', async (req, res) => {
   try {
-    const [rewards] = await pool.query('SELECT * FROM rewards WHERE stock > 0');
+    const [rewards] = await pool.query('SELECT * FROM rewards WHERE stock > 0 ORDER BY points_cost ASC');
     res.json(rewards);
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Server error' });
+    console.error('Rewards error:', err);
+    res.status(500).json({ message: 'Server error fetching rewards.' });
   }
 });
 
-
+// Redeem reward
 router.post('/:rewardId/redeem', authenticateToken, async (req, res) => {
+  console.log('Redemption attempt for reward ID:', req.params.rewardId, 'by user ID:', req.user.id);
   const userId = req.user.id;
-  const rewardId = req.params.rewardId;
+  const rewardId = parseInt(req.params.rewardId);
 
   try {
-    
+    // Get user points
     const [users] = await pool.query('SELECT points FROM users WHERE id = ?', [userId]);
-    if (users.length === 0) return res.status(404).json({ message: 'User  not found' });
+    if (users.length === 0) return res.status(404).json({ message: 'User not found.' });
     const userPoints = users[0].points;
 
-    
-    const [rewards] = await pool.query('SELECT points_cost, stock FROM rewards WHERE id = ?', [rewardId]);
-    if (rewards.length === 0) return res.status(404).json({ message: 'Reward not found' });
+    // Get reward
+    const [rewards] = await pool.query('SELECT points_cost, stock, name FROM rewards WHERE id = ?', [rewardId]);
+    if (rewards.length === 0) return res.status(404).json({ message: 'Reward not found.' });
     const reward = rewards[0];
 
-    if (reward.stock <= 0) return res.status(400).json({ message: 'Reward out of stock' });
-    if (userPoints < reward.points_cost) return res.status(400).json({ message: 'Not enough points' });
+    // Validate
+    if (reward.stock <= 0) return res.status(400).json({ message: 'Reward out of stock.' });
+    if (userPoints < reward.points_cost) return res.status(400).json({ message: 'Not enough points.' });
 
-    
+    // Update database
     await pool.query('UPDATE users SET points = points - ? WHERE id = ?', [reward.points_cost, userId]);
     await pool.query('UPDATE rewards SET stock = stock - 1 WHERE id = ?', [rewardId]);
-
-    
     await pool.query('INSERT INTO user_rewards (user_id, reward_id) VALUES (?, ?)', [userId, rewardId]);
 
-    res.json({ message: 'Reward redeemed successfully' });
+    console.log('Reward redeemed:', reward.name, 'by user ID:', userId);
+    res.json({ message: `Congratulations! You redeemed ${reward.name} for ${reward.points_cost} points.` });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Server error' });
+    console.error('Redemption error:', err);
+    res.status(500).json({ message: 'Server error during redemption.' });
   }
 });
 
