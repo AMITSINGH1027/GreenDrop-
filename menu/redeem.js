@@ -34,3 +34,47 @@ document.querySelector('.search-box input').addEventListener('keyup', function (
     // Show or hide "No Results Found"
     document.getElementById('noResults').style.display = found ? 'none' : 'block';
 });
+
+// redeem.js
+const API_BASE = 'http://localhost:5000/api';
+const token = localStorage.getItem('token');
+
+if (!token) {
+  alert('Please login first.');
+  window.location.href = 'index.html';
+} else {
+  window.addEventListener('load', async () => {
+    try {
+      // Load rewards
+      const rewardsResponse = await fetch(`${API_BASE}/redeem`);
+      const rewards = await rewardsResponse.json();
+
+      const container = document.getElementById('rewardsContainer');
+      rewards.forEach(reward => {
+        const div = document.createElement('div');
+        div.innerHTML = `
+          <h3>${reward.name}</h3>
+          <p>${reward.description} - ${reward.points_cost} points (Stock: ${reward.stock})</p>
+          <button onclick="redeemReward(${reward.id})">Redeem</button>
+        `;
+        container.appendChild(div);
+      });
+    } catch (err) {
+      alert('Error loading rewards.');
+    }
+  });
+
+  window.redeemReward = async (rewardId) => {
+    try {
+      const response = await fetch(`${API_BASE}/redeem/${rewardId}/redeem`, {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      const data = await response.json();
+      alert(response.ok ? data.message : data.message);
+      if (response.ok) location.reload();  // Refresh to update list
+    } catch (err) {
+      alert('Network error.');
+    }
+  };
+}

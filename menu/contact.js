@@ -32,3 +32,29 @@ document.addEventListener("click", (e) => {
 });
 
 document.getElementById('contactForm')
+
+// contact.js
+const API_BASE = 'http://localhost:5000/api';
+
+document.getElementById('contactForm')?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const formData = {
+    reason: document.getElementById('reason').value,
+    name: document.getElementById('name').value,
+    email: document.getElementById('email').value,
+    message: document.getElementById('message').value
+  };
+
+  try {
+    const response = await fetch(`${API_BASE}/contact/submit`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    });
+    const data = await response.json();
+    alert(response.ok ? data.message : data.message);
+    if (response.ok) e.target.reset();
+  } catch (err) {
+    alert('Network error.');
+  }
+});
